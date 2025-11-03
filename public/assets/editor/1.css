@@ -1,0 +1,108 @@
+html,
+body {
+  height: 100%;
+}
+
+#paper {
+  color: #fff;
+  cursor: default !important;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+.router-switch {
+  width: 100px;
+  margin: 4px;
+  background: #68ddd5;
+  color: #484e68;
+  outline: none;
+  font-size: 12px;
+  border: none;
+  padding: 4px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.router-switch:hover {
+  background: #fdc685;
+  color: #fff;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  width: 110%;
+  height: 30%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background-image: conic-gradient(
+    from 0deg at 50% 50%,
+    #00b7ff,
+    #ff30ff,
+    #00b7ff
+  );
+  animation: rotBGimg 6s linear infinite;
+  z-index: 0;
+}
+
+@keyframes rotBGimg {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  background: #07182e;
+  inset: 5px;
+  border-radius: 15px;
+}
+
+.date {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 5px;
+}
+
+.btn.primary {
+  background: transparent;
+  border: 1px solid #00b7ff;
+  color: #00b7ff;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn.primary:hover {
+  background: #00b7ff;
+  color: #07182e;
+}
+
+.btn.danger {
+  border-color: #ff4b4b;
+  color: #ff4b4b;
+}
+
+.btn.danger:hover {
+  background: #ff4b4b;
+  color: #fff;
+}
