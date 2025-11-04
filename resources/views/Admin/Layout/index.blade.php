@@ -14,76 +14,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/swiper-bundle.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/jsvectormap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const spaContent = document.getElementById('spa-content');
-                const links = document.querySelectorAll('[data-page]');
-
-                function setActiveMenu(page) {
-                    links.forEach(link => {
-                        if (link.dataset.page === page) {
-                            link.classList.add('active');
-                            link.closest('.menu-item')?.classList.add('active');
-                        } else {
-                            link.classList.remove('active');
-                            link.closest('.menu-item')?.classList.remove('active');
-                        }
-                    });
-                }
-
-                async function loadPage(page, push = true) {
-                    // Tambah kelas untuk efek fade-out
-                    spaContent.classList.add('fade-out');
-
-                    try {
-                        const res = await fetch(`/Admin/ajax/${page}`, {
-                            headers: {
-                                'X-Requested-With': 'XMLHttpRequest'
-                            }
-                        });
-                        if (!res.ok) throw new Error('Halaman tidak ditemukan');
-                        const html = await res.text();
-
-                        setTimeout(() => {
-                            spaContent.innerHTML = html;
-                            spaContent.classList.remove('fade-out');
-                            spaContent.classList.add('fade-in');
-
-                            if (page === 'SilsilahKeluarga' || page === 'Silsilah') {
-                                initPaper();
-                            }
-                        }, 150);
-
-                        setActiveMenu(page);
-                        if (push) window.history.pushState({
-                            page
-                        }, '', `/Admin/${page}`);
-                    } catch (err) {
-                        spaContent.innerHTML = `<div class="p-4"><p>${err.message}</p></div>`;
-                    }
-                }
-
-                // Klik menu sidebar
-                links.forEach(link => {
-                    link.addEventListener('click', e => {
-                        e.preventDefault();
-                        const page = link.dataset.page;
-                        loadPage(page);
-                    });
-                });
-
-                // Tombol back/forward browser
-                window.addEventListener('popstate', e => {
-                    if (e.state?.page) loadPage(e.state.page, false);
-                });
-
-                // Saat refresh, ambil halaman dari URL
-                const current = location.pathname.replace('/Admin/', '');
-                setActiveMenu(current);
-                loadPage(current, false);
-            });
-        </script>
+        <script src="{{ asset('assets/js/layout.js') }}"></script>
     </head>
 
     <body>

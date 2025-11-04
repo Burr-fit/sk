@@ -1,7 +1,7 @@
 function initPaper() {
     const el = document.getElementById("paper");
     if (!el) {
-        console.warn("⚠️ Elemen #paper belum ditemukan di DOM");
+        console.warn("Elemen #paper belum ditemukan di DOM");
         return;
     }
 
@@ -94,11 +94,77 @@ function initPaper() {
         }
     );
 
-    // === Data keluarga
-    const familyData = [...(window.familyData || [])]; // biar bisa diubah luar
-    if (!familyData.length) {
-        console.warn("⚠️ Tidak ada data familyData.");
-        return;
+    const Addorang = dia.Element.define(
+        "custom.Addorang",
+        {
+            attrs: {
+                foreignObject: { width: "calc(w)", height: "calc(h)" },
+                label: { text: "" },
+            },
+        },
+        {
+            markup: util.svg/* xml */ `
+                <rect @selector="body"/>
+                <foreignObject @selector="foreignObject" overflow="visible">
+                  <div xmlns="http://www.w3.org/1999/xhtml">
+                    <div class="card" style="
+                        background: #07182e;
+                        position: relative;
+                        display: inline-flex;
+                        place-content: center;
+                        place-items: center;
+                        width: fit-content;
+                        overflow: hidden;
+                        border-radius: 20px;
+                        box-shadow: 0 0 10px #00b7ff44;">
+                      <div class="content" style="
+                          display: flex;
+                          align-items: center;
+                          position: relative;
+                          z-index: 1;
+                          width: 100%;
+                          padding: 10px;">
+                            <button class="btn primary" data-tooltip="Tambah" data-bs-toggle="modal" data-bs-target="#modalCreateUser"><i class="fa-solid fa-user-plus"></i></button>
+                        <div class="info" style="
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            flex: 1;
+                            text-align: left;
+                            margin-left: 5px;">
+                            <div class="name">Tambah Orang</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </foreignObject>
+            `,
+        }
+    );
+
+    let familyPayload = {};
+    try {
+        const attr = el.getAttribute("data-family");
+        if (attr) {
+            familyPayload = JSON.parse(attr);
+        }
+    } catch (err) {
+        console.error("Gagal parse data-family:", err);
+        familyPayload = {};
+    }
+
+    const jumlahData = familyPayload?.jumlahData || 0;
+    const familyData = Array.isArray(familyPayload?.data)
+        ? familyPayload.data
+        : [];
+
+    if (jumlahData === 0 || familyData.length === 0) {
+        const addNode = new Addorang({
+            position: { x: width / 2 - 100, y: height / 2 - 40 },
+            size: { width: 240, height: 80 },
+        });
+        graph.addCell(addNode);
+        return; // stop di sini
     }
 
     // === Helper functions
@@ -251,4 +317,4 @@ function initPaper() {
 }
 
 // Jalankan setelah DOM ready
-window.addEventListener("DOMContentLoaded", initPaper);
+window.initPaper = initPaper;

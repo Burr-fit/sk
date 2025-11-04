@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\SpaController;
+use App\Http\Controllers\Admin\{
+    SpaController,
+    SilsilahKeluarga,
+};
 
 Route::prefix('Admin')->group(function () {
     Route::get('/ajax/{slug}', [SpaController::class, 'load'])->name('admin.ajax');
