@@ -130,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             // Load CSS & JS khusus halaman ini
                             await loadCSSForPage("SilsilahKeluarga", [
                                 "/assets/editor/1.css",
+                                "/assets/css/page/silsilah.css",
+                                "https://unpkg.com/intro.js/introjs.css",
                                 "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css",
                             ]);
 
@@ -138,7 +140,11 @@ document.addEventListener("DOMContentLoaded", function () {
                                 "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js",
                                 "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js",
                                 "https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js",
+                                "https://unpkg.com/intro.js/intro.js",
                                 "/assets/editor/1.js",
+                                "/assets/js/actionform.js",
+                                "/assets/js/page/silsilah.js",
+                                "https://cdn.jsdelivr.net/npm/sweetalert2@11",
                             ]);
 
                             // Jalankan inisialisasi

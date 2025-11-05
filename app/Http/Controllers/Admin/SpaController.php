@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Orangs;
 
 class SpaController extends Controller
 {
@@ -12,6 +13,7 @@ class SpaController extends Controller
         if (View()->exists($viewPath)) {
             $data = [];
             if ($page === 'SilsilahKeluarga') {
+
                 $data['familyData'] = [
                     'jumlahData' => 0,
                     'data' => collect([
