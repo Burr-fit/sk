@@ -5,20 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Keluargas extends Model
+class Fitur_Unlocks extends Model
 {
     use HasFactory;
 
-    protected $table = 'keluarga';
-    protected $primaryKey = 'idKeluarga';
+    protected $table = 'fitur_unlock';
+    protected $primaryKey = 'idUnlock';
     public $timestamps = true;
 
     protected $fillable = [
-        'idKeluarga',
-        'namaKeluarga',
-        'kodeEditor',
-        'kodeView',
-        'deskripsi',
+        'idUnlock',
+        'idAkun',
+        'idFitur',
+        'tanggalMulai',
+        'tanggalBerakhir',
+        'potonganPoint',
+        'status',
         'created_at',
         'created_by',
         'updated_at',

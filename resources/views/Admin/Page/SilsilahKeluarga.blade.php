@@ -50,7 +50,6 @@
             </button>
         </div>
     </div>
-
 </div>
 
 
@@ -62,7 +61,6 @@
     data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content shadow-lg border-0 rounded-3">
-
             <!-- Header -->
             <div class="modal-header text-white">
                 <h5 class="modal-title" id="modalCreateUserLabel">
@@ -175,7 +173,6 @@
                     </button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>

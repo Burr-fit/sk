@@ -5,20 +5,20 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Keluargas extends Model
+class Komentar_Ceritas extends Model
 {
     use HasFactory;
 
-    protected $table = 'keluarga';
-    protected $primaryKey = 'idKeluarga';
+    protected $table = 'komentar_cerita';
+    protected $primaryKey = 'idKomentar';
     public $timestamps = true;
 
     protected $fillable = [
-        'idKeluarga',
-        'namaKeluarga',
-        'kodeEditor',
-        'kodeView',
-        'deskripsi',
+        'idKomentar',
+        'idCerita',
+        'idOrang',
+        'isiKomentar',
+        'perentIdKomentar',
         'created_at',
         'created_by',
         'updated_at',
